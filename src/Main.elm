@@ -11,6 +11,7 @@ import Bootstrap.Button as Button
 import Html.Events exposing (onClick)
 import Html exposing (Html, button, div, text)
 import Browser.Events exposing (onAnimationFrameDelta)
+import Round exposing (round)
 
 -- { init : flags -> ( Model, Cmd Msg )
 -- , subscriptions : Model -> Sub Msg
@@ -48,7 +49,7 @@ subscriptions _ =
 update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     case msg of 
-        Frame _ -> ( { model | count = model.count + 1 }, Cmd.none )
+        Frame _ -> ( { model | energy = model.energy + 0.10 }, Cmd.none )
         UpdateA -> ( { model | energy = model.energy + 10 }, Cmd.none)
     
     
@@ -72,24 +73,78 @@ view model =
         , Grid.row [ Row.centerXs ]
             [ Grid.col [ Col.xs2 ]
                 [ text "Col 1" ]
-            , Grid.col [ Col.xs4 ]
-                [ text (String.fromFloat model.energy) 
-                , Button.button
-                    [ Button.success
-                    , Button.large
-                    , Button.block
-                    , Button.attrs [ onClick UpdateA ]
-                    ] [ text (String.fromFloat model.count) ]
-                ]
-            , Grid.col [ Col.xs4 ]
-                [ Button.linkButton
-                                [ Button.primary, Button.attrs [ ] ]
-                                [ text "Start" ]
-                ] 
-                
+               
+            ]
+        , Grid.row [ Row.centerXs ]
+            [ Grid.col [ Col.xs1 ]
+                [ text "Energy" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Hidrogen" ]
+            , Grid.col [ Col.xs1 ]
+                [ text "Oxigen" ]
+            , Grid.col [ Col.xs1 ]
+                [ text "Carbon" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Iron" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Titanium" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Noble gases" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Silicon" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Sulfur" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+
+        ]
+        , Grid.row [ Row.centerXs ]
+            [ Grid.col [ Col.xs1 ]
+                [ text (Round.round 1 model.energy) ]
+            , Grid.col [ Col.xs1 ]
+                [ text "Oxigen" ]
+            , Grid.col [ Col.xs1 ]
+                [ text "Carbon" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Iron" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Titanium" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Noble gases" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Silicon" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "Sulfur" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
+            , Grid.col [ Col.xs1 ]
+                [ text "?" ]        
             ]
         ]
 
+-- , Grid.col [ Col.xs4 ]
+--                 [ text (String.fromFloat model.energy) 
+--                 , Button.button
+--                     [ Button.success
+--                     , Button.large
+--                     , Button.block
+--                     , Button.attrs [ onClick UpdateA ]
+--                     ] [ text (String.fromFloat model.count) ]
+--                 ]
+--             , Grid.col [ Col.xs4 ]
+--                 [ Button.linkButton
+--                                 [ Button.primary, Button.attrs [ ] ]
+--                                 [ text "Start" ]
+--                 ] 
+             
         
         
 
